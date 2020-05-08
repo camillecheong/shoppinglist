@@ -55,7 +55,7 @@ app.get("/", function(req, res) {
       }); //insert many items in item collection at once
       res.redirect("/");
     } else {
-    res.render("list", {listTitle: "Today", newListItems: foundItems});
+    res.render("list", {listTitle: "Grocery", newListItems: foundItems});
     }
     });
   });
@@ -94,7 +94,7 @@ app.post("/", function(req, res){
   });
   console.log(listName);
 
-  if(listName === "Today") {
+  if(listName === "Grocery") {
     item.save();
     res.redirect("/");
   } else {
@@ -123,7 +123,7 @@ app.post("/delete", function(req, res){
   const checkedItemId = req.body.checkbox;
   const listName = req.body.listName;
 
-  if(listName === "Today") {
+  if(listName === "Grocery") {
     Item.findByIdAndRemove(checkedItemId, function(err){
       if (!err) {
         console.log("Successfully deleted");
